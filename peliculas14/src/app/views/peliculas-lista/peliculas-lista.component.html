@@ -1,0 +1,48 @@
+<div
+  [ngStyle]="{
+    'background-image': 'url(' + imagenFondo + ')',
+    'background-size': 'cover',
+    'background-position': 'center 30%',
+    'height': '50vh',
+    'display': 'flex',
+    'flex-direction': 'column',
+    'align-items': 'flex-start',
+    'justify-content': 'center',
+    'padding': '20px'
+  }"
+>
+  <h2 style="color: #fff; text-align: left; margin-bottom: 10px;">
+    {{ titulo }}
+  </h2>
+  <p style="color: #fff; text-align: left; margin-bottom: 20px; max-width: 400px;">
+    {{ texto }}
+  </p>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Buscar película..."
+  />
+</div>
+<br />
+<br />
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-3 col-sx-12"
+      *ngFor="let pelicula of peliculas; let i = index"
+    >
+      <div
+        class="card ms-2 mb-2"
+        [style.max-height.px]="500"
+        style="cursor: pointer; border: 1px solid gray"
+        (click)="handleClick(pelicula.id)"
+      >
+        <img
+          [src]="URL_DETALLE + pelicula.poster_path"
+          class="card-img-top"
+          [alt]="pelicula.title"
+        />
+      </div>
+    </div>
+  </div>
+</div>
